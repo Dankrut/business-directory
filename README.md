@@ -46,8 +46,10 @@ docker run --name guide_back \
 
 Документация API:
 
-    ```- Swagger UI: http://localhost:7777/docs
-    - ReDoc: http://localhost:7777/redoc```
+```bash
+- Swagger UI: http://localhost:7777/docs
+- ReDoc: http://localhost:7777/redoc
+```
 
 ```X-API-Key: static_key```
 
