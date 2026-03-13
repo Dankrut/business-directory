@@ -1,5 +1,6 @@
 Перед запуском создайте файл `.env` в корне проекта:
 
+```env
 MODE=LOCAL
 DB_USER=user
 DB_PASS=user123
@@ -7,9 +8,11 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=guide
 API_KEY=static_key
+```
 
-Для тестов создайте `.env-test`:
+Для тестов создайте `.env.test`:
 
+```env
 MODE=TEST
 DB_USER=user
 DB_PASS=user123
@@ -17,6 +20,7 @@ DB_HOST=localhost
 DB_PORT=5432
 DB_NAME=test
 API_KEY=static_key
+```
 
 # Инструкция по запуску
 
@@ -56,41 +60,41 @@ docker run --name guide_back \
     -d guide_app
 
 # 7. Проверить логи (дождаться запуска)
-# В этом же терминале вы увидите логи. Когда появится "Application startup complete" - нажмите Ctrl+C для выхода
 docker logs -f guide_back
 
-# ------------------------------------------------------------------------------
-Проверка работоспособности:
+# Проверка работоспособности:
 
 Документация API:
     - Swagger UI: http://localhost:7777/docs
     - ReDoc: http://localhost:7777/redoc
 
-Через команду curl в терминале:
+# Через команду curl в терминале:
 
-# Список зданий
+Список зданий:
 curl -X GET "http://localhost:7777/buildings" -H "X-API-Key: static_key"
 
-# Дерево деятельности
+Дерево деятельности:
 curl -X GET "http://localhost:7777/activities/tree" -H "X-API-Key: static_key"
 
-# Информация об организации
+Информация об организации:
 curl -X GET "http://localhost:7777/organizations/1" -H "X-API-Key: static_key"
 
-# Поиск по названию
-# "АвтоМир" в URL-кодировке = %D0%90%D0%B2%D1%82%D0%BE%D0%9C%D0%B8%D1%80
+Поиск по названию:
 curl -X GET "http://localhost:7777/organizations/search/name?name=%D0%90%D0%B2%D1%82%D0%BE%D0%9C%D0%B8%D1%80" -H "X-API-Key: static_key"
 
-# Поиск в радиусе
+Поиск в радиусе:
 curl -X GET "http://localhost:7777/organizations/nearby?lat=55.7558&lng=37.6176&radius=1000" -H "X-API-Key: static_key"
 
-Запуск тестов:
+# Запуск тестов:
 
-# Зайти в контейнер с приложением
+Зайти в контейнер с приложением:
+
 docker exec -it guide_back bash
 
-# Внутри контейнера запустить тесты
+Внутри контейнера запустить тесты:
+
 MODE=TEST pytest tests/ -v
 
-# Выйти
+Выйти:
+
 exit
