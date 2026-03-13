@@ -46,6 +46,8 @@
     ```- Swagger UI: http://localhost:7777/docs
     - ReDoc: http://localhost:7777/redoc```
 
+```X-API-Key: static_key```
+
 # Через команду curl в терминале:
 
 Список зданий:
