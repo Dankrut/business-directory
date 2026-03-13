@@ -1,0 +1,22 @@
+{
+  "buildings": [
+    {"address": "ул. Ленина, 1", "latitude": 55.7558, "longitude": 37.6176},
+    {"address": "ул. Пушкина, 10", "latitude": 55.7658, "longitude": 37.6276}
+  ],
+  "activities": [
+    {"name": "Еда", "level": 1, "parent_id": null},
+    {"name": "Мясная продукция", "level": 2, "parent_id": 1},
+    {"name": "Молочная продукция", "level": 2, "parent_id": 1},
+    {"name": "Автомобили", "level": 1, "parent_id": null}
+  ],
+  "organizations": [
+    {"name": "Мясной двор", "building_id": 1},
+    {"name": "Молочный дом", "building_id": 1},
+    {"name": "Автосервис", "building_id": 2}
+  ],
+  "phones": [
+    {"phone_number": "+7-123-456-78-90", "organization_id": 1},
+    {"phone_number": "+7-123-456-78-91", "organization_id": 1},
+    {"phone_number": "+7-123-456-78-92", "organization_id": 2}
+  ]
+}
