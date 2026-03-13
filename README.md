@@ -67,25 +67,25 @@ API_KEY=static_key
 # Проверка работоспособности:
 
 Документация API:
-    - Swagger UI: http://localhost:7777/docs
-    - ReDoc: http://localhost:7777/redoc
+    ```- Swagger UI: http://localhost:7777/docs
+    - ReDoc: http://localhost:7777/redoc```
 
 # Через команду curl в терминале:
 
 Список зданий:
-curl -X GET "http://localhost:7777/buildings" -H "X-API-Key: static_key"
+```curl -X GET "http://localhost:7777/buildings" -H "X-API-Key: static_key"```
 
 Дерево деятельности:
-curl -X GET "http://localhost:7777/activities/tree" -H "X-API-Key: static_key"
+```curl -X GET "http://localhost:7777/activities/tree" -H "X-API-Key: static_key"```
 
 Информация об организации:
-curl -X GET "http://localhost:7777/organizations/1" -H "X-API-Key: static_key"
+```curl -X GET "http://localhost:7777/organizations/1" -H "X-API-Key: static_key"```
 
 Поиск по названию:
-curl -X GET "http://localhost:7777/organizations/search/name?name=%D0%90%D0%B2%D1%82%D0%BE%D0%9C%D0%B8%D1%80" -H "X-API-Key: static_key"
+```curl -X GET "http://localhost:7777/organizations/search/name?name=%D0%90%D0%B2%D1%82%D0%BE%D0%9C%D0%B8%D1%80" -H "X-API-Key: static_key"```
 
 Поиск в радиусе:
-curl -X GET "http://localhost:7777/organizations/nearby?lat=55.7558&lng=37.6176&radius=1000" -H "X-API-Key: static_key"
+```curl -X GET "http://localhost:7777/organizations/nearby?lat=55.7558&lng=37.6176&radius=1000" -H "X-API-Key: static_key"```
 
 # Запуск тестов:
 
