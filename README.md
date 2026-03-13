@@ -10,7 +10,8 @@
 ```docker volume create pg-guide-data```
 
 # 4. Запустить PostgreSQL
-```docker run --name guide_db \
+```
+docker run --name guide_db \
     -p 6432:5432 \
     -e POSTGRES_USER=user \
     -e POSTGRES_PASSWORD=user123 \
@@ -24,7 +25,8 @@
 ```docker exec -it guide_db psql -U user -d guide -c "CREATE DATABASE test;"```
 
 # 6. Запустить приложение
-```docker run --name guide_back \
+```
+docker run --name guide_back \
     -p 7777:8000 \
     --network=myNetwork \
     -e MODE=LOCAL \
@@ -43,8 +45,10 @@
 # Проверка работоспособности:
 
 Документация API:
-    ```- Swagger UI: http://localhost:7777/docs
-    - ReDoc: http://localhost:7777/redoc```
+    ```
+    - Swagger UI: http://localhost:7777/docs
+    - ReDoc: http://localhost:7777/redoc
+    ```
 
 ```X-API-Key: static_key```
 
@@ -68,13 +72,10 @@
 # Запуск тестов:
 
 Зайти в контейнер с приложением:
-
 ```docker exec -it guide_back bash```
 
 Внутри контейнера запустить тесты:
-
 ```MODE=TEST pytest tests/ -v```
 
 Выйти:
-
 ```exit```
