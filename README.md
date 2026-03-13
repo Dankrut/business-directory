@@ -1,27 +1,3 @@
-Перед запуском создайте файл `.env` в корне проекта:
-
-```env
-MODE=LOCAL
-DB_USER=user
-DB_PASS=user123
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=guide
-API_KEY=static_key
-```
-
-Для тестов создайте `.env.test`:
-
-```env
-MODE=TEST
-DB_USER=user
-DB_PASS=user123
-DB_HOST=localhost
-DB_PORT=5432
-DB_NAME=test
-API_KEY=static_key
-```
-
 # Инструкция по запуску
 
 # 1. Собрать образ приложения
