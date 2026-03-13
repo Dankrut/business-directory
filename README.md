@@ -1,16 +1,19 @@
 # Инструкция по запуску
 
 # 1. Собрать образ приложения
-```docker build -t guide_app .```
+```bash
+docker build -t guide_app .```
 
 # 2. Создать сеть
-```docker network create myNetwork```
+```bash
+docker network create myNetwork```
 
 # 3. Создать volume для данных БД
-```docker volume create pg-guide-data```
+```bash
+docker volume create pg-guide-data```
 
 # 4. Запустить PostgreSQL
-```
+```bash
 docker run --name guide_db \
     -p 6432:5432 \
     -e POSTGRES_USER=user \
@@ -25,7 +28,7 @@ docker run --name guide_db \
 ```docker exec -it guide_db psql -U user -d guide -c "CREATE DATABASE test;"```
 
 # 6. Запустить приложение
-```
+```bash
 docker run --name guide_back \
     -p 7777:8000 \
     --network=myNetwork \
@@ -40,7 +43,8 @@ docker run --name guide_back \
 ```
 
 # 7. Проверить логи (дождаться запуска)
-```docker logs -f guide_back```
+```bash
+docker logs -f guide_back```
 
 # Проверка работоспособности:
 
@@ -56,27 +60,35 @@ docker run --name guide_back \
 # Через команду curl в терминале:
 
 Список зданий:
-```curl -X GET "http://localhost:7777/buildings" -H "X-API-Key: static_key"```
+```bash
+curl -X GET "http://localhost:7777/buildings" -H "X-API-Key: static_key"```
 
 Дерево деятельности:
-```curl -X GET "http://localhost:7777/activities/tree" -H "X-API-Key: static_key"```
+```bash
+curl -X GET "http://localhost:7777/activities/tree" -H "X-API-Key: static_key"```
 
 Информация об организации:
-```curl -X GET "http://localhost:7777/organizations/1" -H "X-API-Key: static_key"```
+```bash
+curl -X GET "http://localhost:7777/organizations/1" -H "X-API-Key: static_key"```
 
 Поиск по названию:
-```curl -X GET "http://localhost:7777/organizations/search/name?name=%D0%90%D0%B2%D1%82%D0%BE%D0%9C%D0%B8%D1%80" -H "X-API-Key: static_key"```
+```bash
+curl -X GET "http://localhost:7777/organizations/search/name?name=%D0%90%D0%B2%D1%82%D0%BE%D0%9C%D0%B8%D1%80" -H "X-API-Key: static_key"```
 
 Поиск в радиусе:
-```curl -X GET "http://localhost:7777/organizations/nearby?lat=55.7558&lng=37.6176&radius=1000" -H "X-API-Key: static_key"```
+```bash
+curl -X GET "http://localhost:7777/organizations/nearby?lat=55.7558&lng=37.6176&radius=1000" -H "X-API-Key: static_key"```
 
 # Запуск тестов:
 
 Зайти в контейнер с приложением:
-```docker exec -it guide_back bash```
+```bash
+docker exec -it guide_back bash```
 
 Внутри контейнера запустить тесты:
-```MODE=TEST pytest tests/ -v```
+```bash
+MODE=TEST pytest tests/ -v```
 
 Выйти:
-```exit```
+```bash
+exit```
