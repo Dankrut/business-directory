@@ -25,29 +25,30 @@ API_KEY=static_key
 # Инструкция по запуску
 
 # 1. Собрать образ приложения
-docker build -t guide_app .
+```docker build -t guide_app .```
 
 # 2. Создать сеть
-docker network create myNetwork
+```docker network create myNetwork```
 
 # 3. Создать volume для данных БД
-docker volume create pg-guide-data
+```docker volume create pg-guide-data```
 
 # 4. Запустить PostgreSQL
-docker run --name guide_db \
+```docker run --name guide_db \
     -p 6432:5432 \
     -e POSTGRES_USER=user \
     -e POSTGRES_PASSWORD=user123 \
     -e POSTGRES_DB=guide \
     --network=myNetwork \
     --volume pg-guide-data:/var/lib/postgresql/data \
-    -d postgres:16
+    -d postgres:16 
+```
 
 # 5. Создать тестовую БД
-docker exec -it guide_db psql -U user -d guide -c "CREATE DATABASE test;"
+```docker exec -it guide_db psql -U user -d guide -c "CREATE DATABASE test;"```
 
 # 6. Запустить приложение
-docker run --name guide_back \
+```docker run --name guide_back \
     -p 7777:8000 \
     --network=myNetwork \
     -e MODE=LOCAL \
@@ -57,10 +58,11 @@ docker run --name guide_back \
     -e DB_PORT=5432 \
     -e DB_NAME=guide \
     -e API_KEY=static_key \
-    -d guide_app
+    -d guide_app 
+```
 
 # 7. Проверить логи (дождаться запуска)
-docker logs -f guide_back
+```docker logs -f guide_back```
 
 # Проверка работоспособности:
 
@@ -89,12 +91,12 @@ curl -X GET "http://localhost:7777/organizations/nearby?lat=55.7558&lng=37.6176&
 
 Зайти в контейнер с приложением:
 
-docker exec -it guide_back bash
+```docker exec -it guide_back bash```
 
 Внутри контейнера запустить тесты:
 
-MODE=TEST pytest tests/ -v
+```MODE=TEST pytest tests/ -v```
 
 Выйти:
 
-exit
+```exit```
